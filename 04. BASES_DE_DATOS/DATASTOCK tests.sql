@@ -1,1 +1,0 @@
-SELECT * FROM datastock_db.rol;
