@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataStock - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-[#0b1114] text-slate-200 font-sans min-h-screen selection:bg-emerald-700 selection:text-white">
+
+    <nav class="border-b border-[#162520] px-6 py-4 flex justify-between items-center bg-[#0d1512]">
+        <div class="flex items-center gap-3">
+            <img src="Logo.png" alt="Logo" class="w-10 h-10 rounded-full border border-[#20362f]">
+            <div>
+                <h1 class="text-xl font-bold text-white tracking-wide">DataStock</h1>
+                <p class="text-[10px] text-slate-400 uppercase tracking-widest">Sistema de Gestión Inteligente</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3 bg-[#111c18] px-4 py-2 rounded-full border border-[#162520]">
+                <div class="w-8 h-8 rounded-full bg-[#1b2f27] flex items-center justify-center text-sm font-bold text-[#4b7c68]">
+                    CR
+                </div>
+                <div class="hidden md:block text-right">
+                    <p class="text-sm font-bold text-white leading-tight">Carlos Rodríguez</p>
+                    <p class="text-[10px] text-slate-400">Empresario</p>
+                </div>
+            </div>
+            
+            <a href="login.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
+                Salir
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        
+        <div class="flex flex-wrap justify-center gap-3 mb-10">
+            <button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#204239] text-white font-semibold text-sm border border-[#2a564a] shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+                Dashboard
+            </button>
+            <button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0d1512] hover:bg-[#111c18] text-slate-300 font-semibold text-sm border border-[#162520] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+                Inventario
+            </button>
+            <button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0d1512] hover:bg-[#111c18] text-slate-300 font-semibold text-sm border border-[#162520] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+                Usuarios
+            </button>
+            <button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0d1512] hover:bg-[#111c18] text-slate-300 font-semibold text-sm border border-[#162520] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                Historial
+            </button>
+            <button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0d1512] hover:bg-[#111c18] text-slate-300 font-semibold text-sm border border-[#162520] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" /></svg>
+                Listas de Mercancía
+            </button>
+        </div>
+
+        <div class="mb-8 bg-[#111c18] p-6 rounded-2xl border border-[#162520]">
+            <h2 class="text-3xl font-bold text-white mb-1">Dashboard</h2>
+            <p class="text-slate-400">Vista general del sistema de inventario</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            
+            <div class="bg-[#111c18] p-6 rounded-2xl border border-[#162520] relative overflow-hidden">
+                <div class="w-12 h-12 bg-[#204239] rounded-xl flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+                </div>
+                <p class="text-slate-400 text-sm font-semibold mb-1">Productos en Stock</p>
+                <h3 class="text-4xl font-bold text-white mb-4">1315</h3>
+                <div class="flex items-center gap-2 text-emerald-500 text-sm font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                    Inventario activo
+                </div>
+            </div>
+
+            <div class="bg-[#111c18] p-6 rounded-2xl border border-[#162520] relative overflow-hidden">
+                <div class="w-12 h-12 bg-[#4b7c68] rounded-xl flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+                </div>
+                <p class="text-slate-400 text-sm font-semibold mb-1">Usuarios Registrados</p>
+                <h3 class="text-4xl font-bold text-white mb-4">6</h3>
+                <div class="flex items-center gap-2 text-emerald-500 text-sm font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                    Sistema colaborativo
+                </div>
+            </div>
+
+            <div class="bg-[#111c18] p-6 rounded-2xl border border-[#162520] relative overflow-hidden">
+                <div class="w-12 h-12 bg-[#7c5c53] rounded-xl flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                </div>
+                <p class="text-slate-400 text-sm font-semibold mb-1">Stock Bajo</p>
+                <h3 class="text-4xl font-bold text-white mb-4">0</h3>
+                <div class="flex items-center gap-2 text-[#cf9f6c] text-sm font-semibold">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                    Requiere atención
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-[#111c18] p-8 rounded-2xl border border-[#162520]">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="w-8 h-8 bg-[#204239] rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                </div>
+                <h3 class="text-2xl font-semibold text-white">Top 10 productos más surtidos</h3>
+            </div>
+            <p class="text-slate-400 text-sm mb-12 ml-11">Productos ordenados por cantidad de ventas</p>
+
+            <div class="relative h-72 w-full overflow-x-auto scrollbar-hide pb-20">
+                
+                <div class="absolute inset-0 flex flex-col justify-between text-xs text-slate-500 pb-24 z-0">
+                    <div class="border-b border-[#162520] flex items-end h-0"><span class="absolute -translate-y-2 -translate-x-8">320</span></div>
+                    <div class="border-b border-[#162520] flex items-end h-0"><span class="absolute -translate-y-2 -translate-x-8">240</span></div>
+                    <div class="border-b border-[#162520] flex items-end h-0"><span class="absolute -translate-y-2 -translate-x-8">160</span></div>
+                    <div class="border-b border-[#162520] flex items-end h-0"><span class="absolute -translate-y-2 -translate-x-6">80</span></div>
+                    <div class="border-b border-[#162520] flex items-end h-0"><span class="absolute -translate-y-2 -translate-x-4">0</span></div>
+                </div>
+
+                <div class="relative z-10 flex items-end justify-between h-48 pl-6 pr-2 gap-4 mt-1">
+                    
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#2a4b3f] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[100%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Arroz Diana x 1kg</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#488266] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[88%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Atún Van Camps...</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#7c5c53] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[75%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Leche Colanta...</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#cf9f6c] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[60%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Galletas Jet...</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#2a4b3f] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[55%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Coca Cola x 2L</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#ae5633] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[52%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Yogurt Alpina...</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#488266] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[48%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Pan Tajado Bimbo</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#488266] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[45%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Detergente Ariel...</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#7c5c53] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[40%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Dog Chow Adulto...</span>
+                    </div>
+
+                    <div class="w-full flex flex-col items-center justify-end h-full group">
+                        <div class="w-full bg-[#cf9f6c] rounded-t-md transition-all hover:opacity-80 cursor-pointer h-[38%]"></div>
+                        <span class="absolute -bottom-20 -rotate-45 origin-top-left text-xs text-slate-300 whitespace-nowrap opacity-80 group-hover:opacity-100 group-hover:text-white transition-all">Pasta Nutresa...</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
