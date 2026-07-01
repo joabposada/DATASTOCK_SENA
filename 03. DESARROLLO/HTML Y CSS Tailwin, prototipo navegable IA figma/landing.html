@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataStock - Gestión Inteligente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0b1114] text-slate-200 font-sans min-h-screen selection:bg-emerald-700 selection:text-white">
+
+<!-- Hero -->
+<header class="bg-[#0b1114] border-b border-[#20362f]">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <img src="Logo.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border border-[#20362f]">
+            <div>
+                <h1 class="text-white font-bold text-xl leading-none tracking-wide">DataStock</h1>
+                <p class="text-slate-400 text-[10px] uppercase tracking-widest mt-1">Sistema de Gestión Inteligente</p>
+            </div>
+        </div>
+        <div class="flex gap-4">
+            <a href="login.html" class="border border-[#204239] text-[#4b7c68] hover:bg-[#162520] px-5 py-2 rounded-full text-sm font-semibold transition-colors">Iniciar Sesión</a>
+            <a href="registro.html" class="bg-[#204239] hover:bg-[#2a564a] text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-lg">Registrarse</a>
+        </div>
+    </div>
+</header>
+
+<!-- Sección principal -->
+<main class="max-w-7xl mx-auto px-6 py-20">
+    <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1">
+            <h2 class="text-5xl font-bold text-white leading-tight mb-6">
+                Controla tu inventario <br><span class="text-[#4b7c68]">de forma inteligente</span>
+            </h2>
+            <p class="text-slate-400 text-lg mb-8">
+                DataStock es la plataforma todo‑en‑uno para gestionar productos, tiendas, usuarios y listas de mercancía. Diseñado para el SENA, construido para el futuro.
+            </p>
+            <div class="flex gap-4">
+                <a href="registro.html" class="bg-[#204239] hover:bg-[#2a564a] text-white px-8 py-3 rounded-full text-sm font-bold transition-colors shadow-lg flex items-center gap-2">
+                    Comenzar ahora
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                </a>
+                <a href="#features" class="border border-[#20362f] hover:bg-[#162520] text-slate-300 px-8 py-3 rounded-full text-sm font-semibold transition-colors">
+                    Conocer más
+                </a>
+            </div>
+        </div>
+        <div class="flex-1 flex justify-center">
+            <div class="bg-[#111c18] border border-[#20362f] rounded-[2rem] p-10 w-full max-w-md shadow-2xl">
+                <div class="flex items-center justify-center mb-8">
+                    <img src="Logo.png" alt="Logo DataStock" class="w-24 h-24 rounded-full shadow-lg object-cover border border-[#20362f]">
+                </div>
+                <div class="space-y-4 text-center">
+                    <div class="bg-[#162520] border border-[#20362f] p-4 rounded-xl">
+                        <p class="text-white font-bold">+1,300</p>
+                        <p class="text-slate-400 text-xs">Productos gestionados</p>
+                    </div>
+                    <div class="bg-[#162520] border border-[#20362f] p-4 rounded-xl">
+                        <p class="text-white font-bold">5</p>
+                        <p class="text-slate-400 text-xs">Sucursales activas</p>
+                    </div>
+                    <div class="bg-[#162520] border border-[#20362f] p-4 rounded-xl">
+                        <p class="text-white font-bold">24/7</p>
+                        <p class="text-slate-400 text-xs">Monitoreo en tiempo real</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div id="features" class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-[#111c18] border border-[#20362f] p-8 rounded-2xl">
+            <div class="w-12 h-12 bg-[#204239] rounded-xl flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2">Inventario centralizado</h3>
+            <p class="text-slate-400 text-sm">Administra existencias, lotes y vencimientos desde un solo lugar.</p>
+        </div>
+        <div class="bg-[#111c18] border border-[#20362f] p-8 rounded-2xl">
+            <div class="w-12 h-12 bg-[#4b7c68] rounded-xl flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2">Roles y permisos</h3>
+            <p class="text-slate-400 text-sm">Cada usuario tiene un rol definido: empresario, administrador o empleado.</p>
+        </div>
+        <div class="bg-[#111c18] border border-[#20362f] p-8 rounded-2xl">
+            <div class="w-12 h-12 bg-[#7c5c53] rounded-xl flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+            <h3 class="text-white font-bold text-lg mb-2">Historial completo</h3>
+            <p class="text-slate-400 text-sm">Cada movimiento queda registrado para auditoría y control.</p>
+        </div>
+    </div>
+
+    <!-- SENA reference -->
+    <div class="mt-20 text-center border-t border-[#20362f] pt-10">
+        <p class="text-slate-500 text-sm">Proyecto desarrollado para el <span class="text-[#4b7c68] font-semibold">SENA</span> – Centro de Gestión y Desarrollo Tecnológico</p>
+    </div>
+</main>
+</body>
+</html>

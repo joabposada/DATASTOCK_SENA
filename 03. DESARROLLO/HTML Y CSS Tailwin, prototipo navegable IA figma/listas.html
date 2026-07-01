@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataStock - Listas de Mercancía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b1114; }
+        ::-webkit-scrollbar-thumb { background: #20362f; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4b7c68; }
+        .modal-puro { display: none; }
+        .modal-puro:target { display: flex; }
+    </style>
+</head>
+<body class="bg-[#0b1114] text-slate-200 font-sans min-h-screen selection:bg-emerald-700 selection:text-white flex flex-col">
+
+<header class="bg-[#0b1114] border-b border-[#20362f] px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+        <img src="Logo.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border border-[#20362f]">
+        <div>
+            <h1 class="text-white font-bold text-xl leading-none tracking-wide">DataStock</h1>
+            <p class="text-slate-400 text-[10px] uppercase tracking-widest mt-1">Sistema de Gestión Inteligente</p>
+        </div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-1 bg-[#111c18] p-1 rounded-2xl border border-[#20362f]">
+        <a href="dashboard.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>
+            Dashboard
+        </a>
+        <a href="inventario.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+            Inventario
+        </a>
+        <a href="usuarios.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" /></svg>
+            Usuarios
+        </a>
+        <a href="tiendas.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z" /></svg>
+            Tiendas
+        </a>
+        <a href="listas.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#204239] text-white shadow-md transition-all text-xs font-bold">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+            Listas de Mercancía
+        </a>
+        <a href="historial.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Historial
+        </a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3 border border-[#20362f] rounded-full pl-2 pr-4 py-1.5 bg-[#111c18]">
+            <div class="bg-[#162520] text-slate-300 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold">CR</div>
+            <div class="text-right">
+                <p class="text-white text-sm font-bold leading-tight">Carlos Rodríguez</p>
+                <p class="text-slate-400 text-[10px] uppercase tracking-wider leading-tight">Empresario</p>
+            </div>
+        </div>
+        <a href="login.html" class="flex items-center gap-2 text-slate-400 hover:text-red-400 text-sm font-semibold transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" /></svg>
+            Salir
+        </a>
+    </div>
+</header>
+
+<main class="flex-1 p-6 max-w-[1600px] mx-auto w-full flex flex-col gap-6">
+    <div class="flex justify-between items-center">
+        <h2 class="text-3xl font-bold text-white">Listas de Mercancía</h2>
+        <a href="#modalCrearLista" class="bg-[#204239] hover:bg-[#2a564a] text-white px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 shadow-lg">
+            <span>+</span> Nueva Lista
+        </a>
+    </div>
+
+    <div class="bg-[#111c18] border border-[#20362f] rounded-2xl overflow-hidden overflow-x-auto">
+        <table class="w-full text-left">
+            <thead>
+            <tr class="border-b border-[#20362f] text-slate-400 text-xs font-bold">
+                <th class="py-4 px-6">Nombre de Lista</th>
+                <th class="py-4 px-6">Tienda</th>
+                <th class="py-4 px-6">Productos</th>
+                <th class="py-4 px-6">Fecha Creación</th>
+                <th class="py-4 px-6 text-right">Acciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-sm">
+            <tr class="border-b border-[#20362f] hover:bg-[#162520]">
+                <td class="py-4 px-6 font-bold text-white">Compra Semanal</td>
+                <td class="py-4 px-6 text-slate-300">Tienda Norte</td>
+                <td class="py-4 px-6 text-slate-400">12 ítems</td>
+                <td class="py-4 px-6 text-slate-400">10/06/2026</td>
+                <td class="py-4 px-6 text-right">
+                    <a href="#modalEditarLista" class="text-slate-400 hover:text-[#cf9f6c] mr-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.89.11l-3.152-.788a.75.75 0 01-.58-.58l-.788-3.152a4.5 4.5 0 011.11-1.89l13.72-13.72z" /></svg></a>
+                    <a href="#" class="text-slate-400 hover:text-red-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<!-- Modal Crear Lista -->
+<div id="modalCrearLista" class="modal-puro fixed inset-0 bg-black/70 backdrop-blur-sm z-50 items-center justify-center p-4">
+    <div class="bg-[#111c18] border border-[#20362f] rounded-[2rem] w-full max-w-md p-8 relative">
+        <a href="#" class="absolute top-6 right-6 text-slate-400 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </a>
+        <h3 class="text-xl font-bold text-white mb-4">Nueva Lista de Mercancía</h3>
+        <form class="space-y-4">
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">Nombre</label>
+                <input type="text" class="w-full bg-[#162520] border border-[#20362f] text-white rounded-xl px-4 py-2 outline-none focus:border-emerald-500">
+            </div>
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">Tienda</label>
+                <select class="w-full bg-[#162520] border border-[#20362f] text-white rounded-xl px-4 py-2 outline-none">
+                    <option>Bodega Central</option>
+                    <option>Tienda Norte</option>
+                </select>
+            </div>
+            <div class="flex justify-end gap-4 pt-2">
+                <a href="#" class="text-slate-300 text-sm">Cancelar</a>
+                <button type="button" class="bg-[#2a564a] text-white px-6 py-2 rounded-xl text-sm font-semibold">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Editar Lista -->
+<div id="modalEditarLista" class="modal-puro fixed inset-0 bg-black/70 backdrop-blur-sm z-50 items-center justify-center p-4">
+    <div class="bg-[#111c18] border border-[#20362f] rounded-[2rem] w-full max-w-md p-8 relative">
+        <a href="#" class="absolute top-6 right-6 text-slate-400 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </a>
+        <h3 class="text-xl font-bold text-white mb-4">Editar Lista</h3>
+        <form class="space-y-4">
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">Nombre</label>
+                <input type="text" value="Compra Semanal" class="w-full bg-[#162520] border border-[#20362f] text-white rounded-xl px-4 py-2 outline-none focus:border-emerald-500">
+            </div>
+            <div>
+                <label class="block text-xs text-slate-400 mb-1">Tienda</label>
+                <select class="w-full bg-[#162520] border border-[#20362f] text-white rounded-xl px-4 py-2 outline-none">
+                    <option>Bodega Central</option>
+                    <option selected>Tienda Norte</option>
+                </select>
+            </div>
+            <div class="flex justify-end gap-4 pt-2">
+                <a href="#" class="text-slate-300 text-sm">Cancelar</a>
+                <button type="button" class="bg-[#2a564a] text-white px-6 py-2 rounded-xl text-sm font-semibold">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
