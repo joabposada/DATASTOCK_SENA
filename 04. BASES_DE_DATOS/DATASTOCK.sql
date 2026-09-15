@@ -1,3 +1,14 @@
+DROP TABLE IF EXISTS historial_movimiento CASCADE;
+DROP TABLE IF EXISTS historial_rol_usuario CASCADE;
+DROP TABLE IF EXISTS inventario_actual CASCADE;
+DROP TABLE IF EXISTS lote_entrada CASCADE;
+DROP TABLE IF EXISTS producto CASCADE;
+DROP TABLE IF EXISTS sitio CASCADE;
+DROP TABLE IF EXISTS marca CASCADE;
+DROP TABLE IF EXISTS categoria CASCADE;
+DROP TABLE IF EXISTS usuario CASCADE;
+DROP TABLE IF EXISTS rol CASCADE;
+
 CREATE TABLE rol(
     id_rol SERIAL NOT NULL,
     nombre_rol VARCHAR(30) NOT NULL,
@@ -158,6 +169,10 @@ COMMENT ON COLUMN historial_movimiento.tipo_movimiento IS 'Tipo de movimiento (E
 COMMENT ON COLUMN historial_movimiento.cantidad IS 'Cantidad de producto movido';
 COMMENT ON COLUMN historial_movimiento.fecha_hora IS 'Fecha y hora exacta en la que ocurrio el movimiento';
 
+
+--INSERTS
+
+
 INSERT INTO rol (nombre_rol) VALUES
 ('Administrador'), ('Almacenista'), ('Supervisor'), ('Cajero'), ('Auditor'), ('Rol Obsoleto');
 
@@ -219,81 +234,116 @@ INSERT INTO historial_movimiento (id_producto, id_sitio, id_sitio_destino, id_us
 (5, 2, 5, 3, 'Traslado a tienda', 120, '2026-09-06 16:45:00'),
 (5, 2, NULL, 4, 'Movimiento Erroneo', 50, '2026-09-07 10:00:00');
 
+
+--JOINS
+
+-- JOIN 1: Ver productos con su categoría
 SELECT p.nombre_producto, p.presentacion, c.nombre_categoria
 FROM producto p
 INNER JOIN categoria c ON p.id_categoria = c.id_categoria;
 
+-- JOIN 2: Ver productos con su marca
 SELECT p.nombre_producto, m.nombre_marca
 FROM producto p
 INNER JOIN marca m ON p.id_marca = m.id_marca;
 
+-- JOIN 3: Ver inventario con nombre de producto y nombre del sitio
 SELECT pr.nombre_producto, s.nombre_sitio, i.stock_disponible
 FROM inventario_actual i
 INNER JOIN producto pr ON i.id_producto = pr.id_producto
 INNER JOIN sitio s ON i.id_sitio = s.id_sitio;
 
+-- JOIN 4: Ver los roles activos de cada usuario
 SELECT u.nombre, u.apellido, r.nombre_rol, h.estado
 FROM historial_rol_usuario h
 INNER JOIN usuario u ON h.id_usuario = u.id_usuario
 INNER JOIN rol r ON h.id_rol = r.id_rol
 WHERE h.estado = 'Activo';
 
+-- JOIN 5: Ver el historial de movimientos con nombres reales de producto y origen
 SELECT hm.tipo_movimiento, pr.nombre_producto, s.nombre_sitio AS origen, hm.cantidad
 FROM historial_movimiento hm
 INNER JOIN producto pr ON hm.id_producto = pr.id_producto
 INNER JOIN sitio s ON hm.id_sitio = s.id_sitio;
 
+
+
+-- SUBCONSULTAS
+
+
+-- SUB 1: Buscar productos de la categoría "Aseo" dinámicamente
 SELECT nombre_producto, presentacion
 FROM producto
 WHERE id_categoria = (SELECT id_categoria FROM categoria WHERE nombre_categoria = 'Aseo');
 
+-- SUB 2: Conocer el stock de la Leche sin saber su ID
 SELECT stock_disponible, id_sitio
 FROM inventario_actual
 WHERE id_producto = (SELECT id_producto FROM producto WHERE nombre_producto = 'Leche Deslactosada');
 
+-- SUB 3: Producto con la mayor cantidad de inventario (Usando MAX)
 SELECT id_producto, stock_disponible
 FROM inventario_actual
 WHERE stock_disponible = (SELECT MAX(stock_disponible) FROM inventario_actual);
 
+-- SUB 4: Ver roles asignados al usuario con documento '1010101010'
 SELECT id_rol, fecha_asignacion
 FROM historial_rol_usuario
 WHERE id_usuario = (SELECT id_usuario FROM usuario WHERE numero_documento = '1010101010');
 
+-- SUB 5: Ver información de los sitios que recibieron lotes en Septiembre 2026
 SELECT nombre_sitio, direccion
 FROM sitio
 WHERE id_sitio IN (SELECT id_sitio FROM lote_entrada WHERE fecha_ingreso >= '2026-09-01');
 
+--  UPDATES
+
+
+-- 1. Actualizar el celular de Joab
 UPDATE usuario
 SET celular = '3009998877'
 WHERE numero_documento = '1010101010';
 
+-- 2. Modificar la presentación de las Salchichas
 UPDATE producto
 SET presentacion = 'Paquete 600g Familiar'
 WHERE id_producto = 3;
 
+-- 3. Sumar 10 unidades al stock disponible de Jabón en polvo en Bodega
 UPDATE inventario_actual
 SET stock_disponible = stock_disponible + 10
 WHERE id_producto = 1 AND id_sitio = 1;
 
+-- 4. Desactivar el rol actual de Thomas
 UPDATE historial_rol_usuario
 SET estado = 'Inactivo'
 WHERE id_usuario = 3;
 
+-- 5. Cambiar el nombre de la categoría 'Snacks' a 'Mecatos y Snacks'
 UPDATE categoria
 SET nombre_categoria = 'Mecatos y Snacks'
 WHERE id_categoria = 5;
 
+
+-- 5. DELETES
+
+
+-- 1. Eliminar el registro de movimiento marcado como erróneo
 DELETE FROM historial_movimiento
 WHERE id_movimiento = 6;
 
+-- 2. Eliminar el lote de entrada que ingresó con factura errónea
 DELETE FROM lote_entrada
 WHERE factura_proveedor = 'FAC-ERROR';
 
+-- 3. Quitar el rol obsoleto (rol 6) asignado al usuario 5
 DELETE FROM historial_rol_usuario
 WHERE id_usuario = 5 AND id_rol = 6;
 
+-- 4. Borrar la 'Categoría de Prueba' que no tiene productos asignados
 DELETE FROM categoria
 WHERE nombre_categoria = 'Categoría de Prueba';
 
+-- 5. Borrar la 'Marca Fantasma' que no tiene productos asignados
 DELETE FROM marca
 WHERE nombre_marca = 'Marca Fantasma';
