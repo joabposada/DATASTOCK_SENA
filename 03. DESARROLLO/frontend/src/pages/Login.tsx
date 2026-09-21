@@ -26,6 +26,11 @@ export function Login() {
       );
 
       if (usuarioEncontrado) {
+        // Guardamos la sesión en el localStorage como pide la rúbrica del SENA
+        localStorage.setItem(
+          "usuarioLogueado",
+          JSON.stringify(usuarioEncontrado),
+        );
         navigate("/dashboard");
       } else {
         setError("Correo o contraseña incorrectos");
@@ -73,11 +78,11 @@ export function Login() {
               value={correo}
               onChange={(e) => setCorreo(e.target.value)}
               placeholder="correo@ejemplo.com"
-              className="w-full bg-[#162520] border border-[#20362f] text-white text-sm rounded-xl px-4 py-3 outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-all placeholder-slate-500"
+              className="w-full bg-[#162520] border border-[#20362f] text-white text-sm rounded-xl px-4 py-3 outline-none focus:border-emerald-600 transition-all placeholder-slate-500"
             />
           </div>
 
-          <div className="mb-2 text-left relative">
+          <div className="mb-8 text-left">
             <label
               htmlFor="password"
               className="block text-sm font-semibold text-slate-200 mb-2"
@@ -90,17 +95,8 @@ export function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full bg-[#162520] border border-[#20362f] text-white text-sm rounded-xl px-4 py-3 outline-none focus:border-emerald-600 focus:ring-1 focus:ring-emerald-600 transition-all placeholder-slate-500 tracking-widest"
+              className="w-full bg-[#162520] border border-[#20362f] text-white text-sm rounded-xl px-4 py-3 outline-none focus:border-emerald-600 transition-all placeholder-slate-500 tracking-widest"
             />
-          </div>
-
-          <div className="mb-8 text-right">
-            <a
-              href="#"
-              className="text-xs text-slate-400 hover:text-emerald-500 transition-colors font-semibold"
-            >
-              ¿Olvidaste tu contraseña?
-            </a>
           </div>
 
           <button

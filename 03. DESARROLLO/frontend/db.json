@@ -1,22 +1,56 @@
 {
-  "usuarios": [
+  "usuarios": [],
+  "productos": [
     {
-      "nombre": "Gabriela N/A",
-      "correo": "gabriela@gmail",
-      "rol": "admin_inventario",
-      "password": "123456789",
-      "id": 1
-    },
-    {
-      "nombre": "Andres cardenas",
-      "correo": "andres@gmail.com",
-      "rol": "empleado",
-      "password": "6767",
-      "id": 2
+      "id": 1,
+      "nombre": "Arroz Diana 1kg",
+      "marca": "Diana",
+      "presentacion": "Bolsa",
+      "stock": 20,
+      "lote": "LOTE-001",
+      "vencimiento": "12/04/2027"
     }
   ],
-  "productos": [],
-  "categorias": [],
-  "marcas": [],
-  "sitios": []
+  "categorias": [
+    {
+      "id": 1,
+      "nombre": "Granos y Cereales"
+    },
+    {
+      "id": 2,
+      "nombre": "Lácteos"
+    },
+    {
+      "id": 3,
+      "nombre": "Aseo y Limpieza"
+    }
+  ],
+  "marcas": [
+    {
+      "id": 1,
+      "nombre": "Diana"
+    },
+    {
+      "id": 2,
+      "nombre": "Colanta"
+    },
+    {
+      "id": 3,
+      "nombre": "Ariel"
+    }
+  ],
+  "sitios": [
+    {
+      "id": 1,
+      "nombre": "Bodega Principal"
+    },
+    {
+      "id": 2,
+      "nombre": "Tienda 1"
+    },
+    {
+      "nombre": "Tienda 2",
+      "id": 3
+    }
+  ]
 }

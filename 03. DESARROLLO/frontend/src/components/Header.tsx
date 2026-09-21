@@ -1,8 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export function Header() {
+  const navigate = useNavigate();
+  const [nombreUsuario, setNombreUsuario] = useState("Usuario");
+  const [rolUsuario, setRolUsuario] = useState("Empresario");
+
+  useEffect(() => {
+    const usuarioGuardado = localStorage.getItem("usuarioLogueado");
+    if (usuarioGuardado) {
+      const data = JSON.parse(usuarioGuardado);
+      setNombreUsuario(data.nombre || "Usuario");
+      setRolUsuario(data.rol || "Empresario");
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("usuarioLogueado");
+    navigate("/login");
+  };
+
+  const iniciales = nombreUsuario
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .substring(0, 2)
+    .toUpperCase();
+
   return (
-    <header className="bg-[#0b1114] border-b border-[#20362f] px-6 py-4 flex justify-between items-center">
+    <header className="bg-[#111c18] border-b border-[#20362f] px-6 py-4 flex items-center justify-between flex-wrap gap-4">
       <div className="flex items-center gap-3">
         <img
           src="/Logo.png"
@@ -10,57 +36,75 @@ export function Header() {
           className="w-10 h-10 rounded-full object-cover border border-[#20362f]"
         />
         <div>
-          <h1 className="text-white font-bold text-xl leading-none tracking-wide">
+          <h1 className="text-white font-bold text-lg leading-none">
             DataStock
           </h1>
-          <p className="text-slate-400 text-[10px] uppercase tracking-widest mt-1">
-            Sistema de Gestión Inteligente
+          <p className="text-slate-400 text-xs mt-1">
+            SISTEMA DE GESTIÓN INTELIGENTE
           </p>
         </div>
       </div>
 
-      <nav className="hidden md:flex items-center gap-1 bg-[#111c18] p-1 rounded-2xl border border-[#20362f]">
+      <nav className="flex items-center gap-2 bg-[#162520] border border-[#20362f] p-1.5 rounded-full overflow-x-auto">
         <Link
           to="/dashboard"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#204239] text-white shadow-md transition-all text-xs font-bold"
+          className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 hover:text-white transition-all"
         >
           Dashboard
         </Link>
         <Link
           to="/inventario"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold"
+          className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 hover:text-white transition-all"
         >
           Inventario
         </Link>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 text-xs font-semibold opacity-50 cursor-not-allowed">
+        <Link
+          to="/usuarios"
+          className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 hover:text-white transition-all"
+        >
           Usuarios
-        </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 text-xs font-semibold opacity-50 cursor-not-allowed">
+        </Link>
+        <Link
+          to="/tiendas"
+          className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 hover:text-white transition-all"
+        >
           Tiendas
-        </div>
+        </Link>
+        <Link
+          to="/categorias"
+          className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 hover:text-white transition-all"
+        >
+          Categorías
+        </Link>
+        <Link
+          to="/marcas"
+          className="px-4 py-1.5 rounded-full text-xs font-semibold text-slate-300 hover:text-white transition-all"
+        >
+          Marcas
+        </Link>
       </nav>
 
       <div className="flex items-center gap-4">
-        <div className="flex items-center gap-3 border border-[#20362f] rounded-full pl-2 pr-4 py-1.5 bg-[#111c18]">
-          <div className="bg-[#162520] text-slate-300 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold">
-            CR
+        <div className="flex items-center gap-3 bg-[#162520] border border-[#20362f] px-3 py-1.5 rounded-2xl">
+          <div className="w-9 h-9 rounded-xl bg-[#204239] text-emerald-300 font-bold flex items-center justify-center text-xs border border-emerald-900/50">
+            {iniciales}
           </div>
-          <div className="text-right">
-            <p className="text-white text-sm font-bold leading-tight">
-              Carlos Rodríguez
+          <div className="text-left">
+            <p className="text-xs font-bold text-white leading-tight">
+              {nombreUsuario}
             </p>
-            <p className="text-slate-400 text-[10px] uppercase tracking-wider leading-tight">
-              Empresario
+            <p className="text-[10px] uppercase font-mono text-emerald-500 tracking-wider">
+              {rolUsuario}
             </p>
           </div>
         </div>
-        {/* Botón salir nos devuelve al Login */}
-        <Link
-          to="/login"
-          className="flex items-center gap-2 text-slate-400 hover:text-red-400 text-sm font-semibold transition-colors"
+
+        <button
+          onClick={handleLogout}
+          className="text-xs font-semibold text-slate-400 hover:text-red-400 border border-[#20362f] hover:border-red-900/50 bg-[#162520] px-4 py-2.5 rounded-xl transition-colors cursor-pointer"
         >
           Salir
-        </Link>
+        </button>
       </div>
     </header>
   );
