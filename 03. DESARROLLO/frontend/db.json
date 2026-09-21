@@ -1,0 +1,22 @@
+{
+  "usuarios": [
+    {
+      "nombre": "Gabriela N/A",
+      "correo": "gabriela@gmail",
+      "rol": "admin_inventario",
+      "password": "123456789",
+      "id": 1
+    },
+    {
+      "nombre": "Andres cardenas",
+      "correo": "andres@gmail.com",
+      "rol": "empleado",
+      "password": "6767",
+      "id": 2
+    }
+  ],
+  "productos": [],
+  "categorias": [],
+  "marcas": [],
+  "sitios": []
+}

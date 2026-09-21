@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Header() {
   return (
     <header className="bg-[#0b1114] border-b border-[#20362f] px-6 py-4 flex justify-between items-center">
@@ -18,30 +20,24 @@ export function Header() {
       </div>
 
       <nav className="hidden md:flex items-center gap-1 bg-[#111c18] p-1 rounded-2xl border border-[#20362f]">
-        <a
-          href="#"
+        <Link
+          to="/dashboard"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#204239] text-white shadow-md transition-all text-xs font-bold"
         >
           Dashboard
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to="/inventario"
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold"
         >
           Inventario
-        </a>
-        <a
-          href="#"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold"
-        >
+        </Link>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 text-xs font-semibold opacity-50 cursor-not-allowed">
           Usuarios
-        </a>
-        <a
-          href="#"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-[#162520] transition-all text-xs font-semibold"
-        >
+        </div>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-slate-400 text-xs font-semibold opacity-50 cursor-not-allowed">
           Tiendas
-        </a>
+        </div>
       </nav>
 
       <div className="flex items-center gap-4">
@@ -58,12 +54,13 @@ export function Header() {
             </p>
           </div>
         </div>
-        <a
-          href="#"
+        {/* Botón salir nos devuelve al Login */}
+        <Link
+          to="/login"
           className="flex items-center gap-2 text-slate-400 hover:text-red-400 text-sm font-semibold transition-colors"
         >
           Salir
-        </a>
+        </Link>
       </div>
     </header>
   );
