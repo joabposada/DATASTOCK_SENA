@@ -1,3 +1,4 @@
+import CryptoJS from "crypto-js";
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
@@ -21,16 +22,18 @@ export function Login() {
       const response = await api.get("/usuarios");
       const usuarios = response.data;
 
+      // Encriptamos la contraseña ingresada para compararla con la base de datos
+      const passwordHasheada = CryptoJS.SHA256(password).toString();
+
       const usuarioEncontrado = usuarios.find(
-        (u: any) => u.correo === correo && u.password === password,
+        (u: any) => u.correo === correo && u.password === passwordHasheada,
       );
 
       if (usuarioEncontrado) {
-        // Guardamos la sesión en el localStorage como pide la rúbrica del SENA
-        localStorage.setItem(
-          "usuarioLogueado",
-          JSON.stringify(usuarioEncontrado),
-        );
+        // SEGURIDAD: Extraemos la contraseña para NUNCA guardarla en localStorage
+        const { password: _, ...datosSeguros } = usuarioEncontrado;
+
+        localStorage.setItem("usuarioLogueado", JSON.stringify(datosSeguros));
         navigate("/dashboard");
       } else {
         setError("Correo o contraseña incorrectos");

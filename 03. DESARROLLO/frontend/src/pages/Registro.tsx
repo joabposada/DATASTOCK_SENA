@@ -1,3 +1,4 @@
+import CryptoJS from "crypto-js";
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../services/api";
@@ -47,12 +48,17 @@ export function Registro() {
     }
 
     try {
-      // Guardamos en la base de datos simulada
+      // 1. Encriptamos la contraseña con SHA256 antes de enviarla
+      const passwordHasheada = CryptoJS.SHA256(
+        formData.password_reg,
+      ).toString();
+
+      // 2. Guardamos en la base de datos simulada usando el hash
       await api.post("/usuarios", {
         nombre: `${formData.primer_nombre} ${formData.primer_apellido}`,
         correo: formData.correo,
         rol: formData.rol,
-        password: formData.password_reg,
+        password: passwordHasheada, // Guardamos el código ilegible, NO el texto plano
       });
 
       navigate("/login");
