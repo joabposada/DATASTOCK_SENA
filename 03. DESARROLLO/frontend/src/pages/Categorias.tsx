@@ -47,6 +47,7 @@ export function Categorias() {
           </button>
         </div>
 
+        {/* modal para crear categoría */}
         {showModal && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
             <div className="bg-[#111c18] border border-[#20362f] p-8 rounded-[2rem] w-full max-w-md">
@@ -82,6 +83,7 @@ export function Categorias() {
           </div>
         )}
 
+        {/* tabla de categorías */}
         <div className="bg-[#111c18] border border-[#20362f] rounded-2xl overflow-hidden">
           <table className="w-full text-left border-collapse">
             <thead>

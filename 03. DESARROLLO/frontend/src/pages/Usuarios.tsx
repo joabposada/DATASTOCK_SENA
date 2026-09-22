@@ -22,6 +22,7 @@ export function Usuarios() {
     password: "",
   });
 
+  // busco la lista de usuarios en el backend
   const cargarUsuarios = async () => {
     try {
       const response = await api.get("/usuarios");
@@ -97,6 +98,7 @@ export function Usuarios() {
           </button>
         </div>
 
+        {/* modal para crear usuario */}
         {showModal && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
             <div className="bg-[#111c18] border border-[#20362f] p-8 rounded-[2rem] w-full max-w-md shadow-2xl">
@@ -168,6 +170,7 @@ export function Usuarios() {
           </div>
         )}
 
+        {/* modal para editar usuario */}
         {usuarioEditar && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
             <div className="bg-[#111c18] border border-[#20362f] p-8 rounded-[2rem] w-full max-w-md shadow-2xl">
@@ -230,6 +233,7 @@ export function Usuarios() {
           </div>
         )}
 
+        {/* tabla de usuarios */}
         <div className="bg-[#111c18] border border-[#20362f] rounded-2xl overflow-hidden">
           <table className="w-full text-left border-collapse">
             <thead>

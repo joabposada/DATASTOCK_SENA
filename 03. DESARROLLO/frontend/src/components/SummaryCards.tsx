@@ -1,6 +1,8 @@
 export function SummaryCards() {
   return (
+    // las 3 tarjetas con los números del dashboard
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      {/* productos en stock */}
       <div className="bg-[#111c18] p-6 rounded-2xl border border-[#20362f] relative overflow-hidden">
         <div className="w-12 h-12 bg-[#204239] rounded-xl flex items-center justify-center mb-4">
           <svg
@@ -41,6 +43,7 @@ export function SummaryCards() {
         </div>
       </div>
 
+      {/* usuarios registrados */}
       <div className="bg-[#111c18] p-6 rounded-2xl border border-[#20362f] relative overflow-hidden">
         <div className="w-12 h-12 bg-[#4b7c68] rounded-xl flex items-center justify-center mb-4">
           <svg
@@ -81,6 +84,7 @@ export function SummaryCards() {
         </div>
       </div>
 
+      {/* stock bajo */}
       <div className="bg-[#111c18] p-6 rounded-2xl border border-[#20362f] relative overflow-hidden">
         <div className="w-12 h-12 bg-[#7c5c53] rounded-xl flex items-center justify-center mb-4">
           <svg

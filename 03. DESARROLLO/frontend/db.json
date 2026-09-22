@@ -1,13 +1,6 @@
 {
   "usuarios": [
     {
-      "nombre": "joabposada",
-      "correo": "joabposada@gmail",
-      "rol": "empresario",
-      "password": "1234",
-      "id": 1
-    },
-    {
       "nombre": "miguel montaño",
       "correo": "miguel@gmail",
       "rol": "empresario",
@@ -20,6 +13,13 @@
       "rol": "empresario",
       "password": "6161b2838ffa6ce17b84db3b45b4f8437855ecf43e75de2d1ad0008eaae91aa0",
       "id": 3
+    },
+    {
+      "nombre": "ffrfffdfdfdfdf",
+      "correo": "joabposada@gmail",
+      "rol": "empresario",
+      "password": "1234",
+      "id": 4
     }
   ],
   "productos": [

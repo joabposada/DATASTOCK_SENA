@@ -47,6 +47,7 @@ export function Login() {
   return (
     <div className="bg-[#0b1114] min-h-screen flex items-center justify-center font-sans p-4">
       <div className="bg-[#111c18] p-10 rounded-[2rem] shadow-2xl w-full max-w-md text-center border border-[#20362f]">
+        {/* logo y titulo */}
         <div className="mb-10 flex flex-col items-center">
           <img
             src="/Logo.png"
@@ -61,6 +62,7 @@ export function Login() {
           </p>
         </div>
 
+        {/* si algo falla muestro el mensaje de error aquí */}
         {error && (
           <div className="mb-6 p-3 bg-red-900/50 border border-red-700 text-red-200 text-sm rounded-xl text-center">
             {error}

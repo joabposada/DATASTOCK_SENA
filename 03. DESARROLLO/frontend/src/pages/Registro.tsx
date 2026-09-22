@@ -19,6 +19,7 @@ export function Registro() {
 
   const [error, setError] = useState("");
 
+  // actualizo el formulario cada vez que cambia un campo
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
@@ -90,6 +91,7 @@ export function Registro() {
         )}
 
         <form onSubmit={handleSubmit}>
+          {/* datos personales */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-6">
             <div>
               <label

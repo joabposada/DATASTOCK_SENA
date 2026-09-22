@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 
 export function Header() {
   const navigate = useNavigate();
+  // valores por defecto por si no hay nadie guardado
   const [nombreUsuario, setNombreUsuario] = useState("Usuario");
   const [rolUsuario, setRolUsuario] = useState("Empresario");
 
+  // al cargar, busco al usuario que guardé cuando hizo login
   useEffect(() => {
     const usuarioGuardado = localStorage.getItem("usuarioLogueado");
     if (usuarioGuardado) {
@@ -15,11 +17,13 @@ export function Header() {
     }
   }, []);
 
+  // borro el usuario guardado y me devuelvo al login
   const handleLogout = () => {
     localStorage.removeItem("usuarioLogueado");
     navigate("/login");
   };
 
+  // saco las iniciales del nombre (máximo 2 letras) para el avatar
   const iniciales = nombreUsuario
     .split(" ")
     .map((n) => n[0])
@@ -29,6 +33,7 @@ export function Header() {
 
   return (
     <header className="bg-[#111c18] border-b border-[#20362f] px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+      {/* logo y nombre del sistema */}
       <div className="flex items-center gap-3">
         <img
           src="/Logo.png"
@@ -45,6 +50,7 @@ export function Header() {
         </div>
       </div>
 
+      {/* menú para moverme entre las secciones */}
       <nav className="flex items-center gap-2 bg-[#162520] border border-[#20362f] p-1.5 rounded-full overflow-x-auto">
         <Link
           to="/dashboard"
@@ -85,6 +91,7 @@ export function Header() {
       </nav>
 
       <div className="flex items-center gap-4">
+        {/* aquí muestro quién está logueado */}
         <div className="flex items-center gap-3 bg-[#162520] border border-[#20362f] px-3 py-1.5 rounded-2xl">
           <div className="w-9 h-9 rounded-xl bg-[#204239] text-emerald-300 font-bold flex items-center justify-center text-xs border border-emerald-900/50">
             {iniciales}
@@ -99,6 +106,7 @@ export function Header() {
           </div>
         </div>
 
+        {/* botón para cerrar sesión */}
         <button
           onClick={handleLogout}
           className="text-xs font-semibold text-slate-400 hover:text-red-400 border border-[#20362f] hover:border-red-900/50 bg-[#162520] px-4 py-2.5 rounded-xl transition-colors cursor-pointer"

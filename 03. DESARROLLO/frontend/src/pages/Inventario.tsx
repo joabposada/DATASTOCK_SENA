@@ -26,6 +26,7 @@ export function Inventario() {
     vencimiento: "",
   });
 
+  // traigo todos los productos del backend
   const cargarProductos = async () => {
     try {
       const response = await api.get("/productos");
@@ -48,6 +49,7 @@ export function Inventario() {
     });
   };
 
+  // creo el producto nuevo y recargo la tabla
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
@@ -103,6 +105,7 @@ export function Inventario() {
       <Header />
 
       <main className="flex-1 p-6 max-w-[1600px] mx-auto w-full flex flex-col gap-6">
+        {/* encabezado con el botón de agregar */}
         <div className="bg-[#111c18] rounded-[2rem] p-8 border border-[#20362f] flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-5">
             <div className="bg-[#162520] p-4 rounded-2xl border border-[#20362f]">
@@ -139,6 +142,7 @@ export function Inventario() {
           </button>
         </div>
 
+        {/* modal para crear producto */}
         {showModal && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
             <div className="bg-[#111c18] border border-[#20362f] p-8 rounded-[2rem] w-full max-w-lg shadow-2xl">
@@ -260,6 +264,7 @@ export function Inventario() {
           </div>
         )}
 
+        {/* modal para editar producto */}
         {productoEditar && (
           <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50">
             <div className="bg-[#111c18] border border-[#20362f] p-8 rounded-[2rem] w-full max-w-lg shadow-2xl">
@@ -404,6 +409,7 @@ export function Inventario() {
           </div>
         )}
 
+        {/* tabla con todo el inventario */}
         <div className="bg-[#111c18] border border-[#20362f] rounded-2xl overflow-hidden overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
