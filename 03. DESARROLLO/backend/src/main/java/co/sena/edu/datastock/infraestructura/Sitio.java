@@ -11,14 +11,6 @@ public class Sitio {
     @Column(name = "id_sitio")
     private Integer idSitio;
 
-    public String getNombreSitio() {
-        return nombreSitio;
-    }
-
-    public void setNombreSitio(String nombreSitio) {
-        this.nombreSitio = nombreSitio;
-    }
-
     @Column(name = "nombre_sitio", length = 100, nullable = false)
     private String nombreSitio;
 
@@ -28,4 +20,35 @@ public class Sitio {
     @Column(length = 150, nullable = false)
     private String direccion;
 
+    public Integer getIdSitio() {
+        return idSitio;
+    }
+
+    public void setIdSitio(Integer idSitio) {
+        this.idSitio = idSitio;
+    }
+
+    public String getNombreSitio() {
+        return nombreSitio;
+    }
+
+    public void setNombreSitio(String nombreSitio) {
+        this.nombreSitio = nombreSitio;
+    }
+
+    public String getTipoSitio() {
+        return tipoSitio;
+    }
+
+    public void setTipoSitio(String tipoSitio) {
+        this.tipoSitio = tipoSitio;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 }

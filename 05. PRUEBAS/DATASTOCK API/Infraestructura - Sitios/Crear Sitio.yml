@@ -1,0 +1,24 @@
+info:
+  name: Crear Sitio
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/api/sitios
+  body:
+    type: json
+    data: |-
+      {
+        "nombreSitio": "Bodega Principal Madrid",
+        "tipoSitio": "Bodega",
+        "direccion": "Calle 7 # 12-45"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

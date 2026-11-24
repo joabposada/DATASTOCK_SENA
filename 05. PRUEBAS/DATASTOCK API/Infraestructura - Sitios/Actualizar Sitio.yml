@@ -1,0 +1,24 @@
+info:
+  name: Actualizar Sitio
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: http://localhost:8080/api/sitios/1
+  body:
+    type: json
+    data: |-
+      {
+        "nombreSitio": "Bodega Central Madrid",
+        "tipoSitio": "Bodega Principal",
+        "direccion": "Calle 7 # 12-45 Sur"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
