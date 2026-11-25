@@ -17,6 +17,38 @@ public class Producto {
     @Column(length = 50, nullable = false)
     private String presentacion;
 
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", nullable = false)
+    private Categoria categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "id_marca", nullable = false)
+    private Marca marca;
+
+    public Integer getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public String getPresentacion() {
+        return presentacion;
+    }
+
+    public void setPresentacion(String presentacion) {
+        this.presentacion = presentacion;
+    }
+
     public Categoria getCategoria() {
         return categoria;
     }
@@ -25,13 +57,11 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    // Conecto muchos productos hacia una misma categoría
-    @ManyToOne
-    @JoinColumn(name = "id_categoria", nullable = false)
-    private Categoria categoria;
+    public Marca getMarca() {
+        return marca;
+    }
 
-    // Conecto muchos productos hacia una misma marca
-    @ManyToOne
-    @JoinColumn(name = "id_marca", nullable = false)
-    private Marca marca;
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
 }

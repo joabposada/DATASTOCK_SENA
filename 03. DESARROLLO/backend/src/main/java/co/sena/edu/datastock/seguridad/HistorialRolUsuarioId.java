@@ -5,7 +5,6 @@ import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-// Uso @Embeddable porque esta clase no es una tabla, sino la llave primaria compuesta de historial_rol_usuario
 @Embeddable
 public class HistorialRolUsuarioId implements Serializable {
 
@@ -31,7 +30,14 @@ public class HistorialRolUsuarioId implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    // Hibernate exige equals y hashCode en llaves compuestas para poder comparar registros en memoria
+    public Integer getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

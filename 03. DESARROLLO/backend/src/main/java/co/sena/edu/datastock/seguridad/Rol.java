@@ -6,11 +6,21 @@ import jakarta.persistence.*;
 @Table(name = "rol")
 public class Rol {
 
-    // Uso GenerationType.IDENTITY para que PostgreSQL maneje el autoincremento de la llave sustituta
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_rol")
     private Integer idRol;
+
+    @Column(name = "nombre_rol", length = 30, nullable = false)
+    private String nombreRol;
+
+    public Integer getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(Integer idRol) {
+        this.idRol = idRol;
+    }
 
     public String getNombreRol() {
         return nombreRol;
@@ -19,8 +29,4 @@ public class Rol {
     public void setNombreRol(String nombreRol) {
         this.nombreRol = nombreRol;
     }
-
-    @Column(name = "nombre_rol", length = 30, nullable = false)
-    private String nombreRol;
-
 }

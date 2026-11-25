@@ -1,0 +1,22 @@
+info:
+  name: Crear Marca
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:8080/api/marcas
+  body:
+    type: json
+    data: |-
+      {
+        "nombreMarca": "Alpina"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

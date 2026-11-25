@@ -1,0 +1,25 @@
+info:
+  name: Crear Producto
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:8080/api/productos
+  body:
+    type: json
+    data: |-
+      {
+        "nombreProducto": "Leche Entera",
+        "presentacion": "Bolsa 1100 ml",
+        "idCategoria": 1,
+        "idMarca": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
