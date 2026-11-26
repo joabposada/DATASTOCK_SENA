@@ -1,0 +1,20 @@
+{
+  "annotations": {
+    "changelogDate": "20261126053642"
+  },
+  "applications": ["datastock"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "nombreMarca",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    }
+  ],
+  "name": "Marca",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

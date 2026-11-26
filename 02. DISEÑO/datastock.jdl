@@ -1,0 +1,92 @@
+application {
+  config {
+    baseName datastock
+    applicationType monolith
+    packageName co.edu.sena.datastock
+    authenticationType jwt
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    buildTool maven
+    clientFramework react
+    nativeLanguage es
+    languages [es, en]
+  }
+  entities *
+}
+
+entity Sitio {
+  nombreSitio String required maxlength(60)
+  tipoSitio String required maxlength(30)
+  direccion String required maxlength(120)
+}
+
+entity Categoria {
+  nombreCategoria String required maxlength(50)
+}
+
+entity Marca {
+  nombreMarca String required maxlength(50)
+}
+
+entity Producto {
+  nombreProducto String required maxlength(100)
+  presentacion String required maxlength(50)
+}
+
+entity Rol {
+  nombreRol String required maxlength(30)
+}
+
+entity Usuario {
+  numeroDocumento String required unique maxlength(11)
+  nombre String required maxlength(50)
+  apellido String required maxlength(50)
+  celular String required maxlength(15)
+  correo String required unique maxlength(100)
+  password String required maxlength(255)
+}
+
+entity HistorialRolUsuario {
+  fechaAsignacion LocalDate required
+  estado String required maxlength(15)
+}
+
+entity LoteEntrada {
+  fechaIngreso LocalDate required
+  fechaVencimiento LocalDate required
+  cantidadIngresada Integer required min(1)
+  facturaProveedor String required maxlength(50)
+}
+
+entity InventarioActual {
+  stockDisponible Integer required min(0)
+}
+
+entity HistorialMovimiento {
+  idSitioDestino Integer
+  tipoMovimiento String required maxlength(30)
+  cantidad Integer required min(1)
+  fechaHora Instant required
+}
+
+relationship ManyToOne {
+  Producto{categoria(nombreCategoria) required} to Categoria
+  Producto{marca(nombreMarca) required} to Marca
+
+  HistorialRolUsuario{usuario(nombre) required} to Usuario
+  HistorialRolUsuario{rol(nombreRol) required} to Rol
+
+  LoteEntrada{producto(nombreProducto) required} to Producto
+  LoteEntrada{sitio(nombreSitio) required} to Sitio
+
+  InventarioActual{producto(nombreProducto) required} to Producto
+  InventarioActual{sitio(nombreSitio) required} to Sitio
+
+  HistorialMovimiento{producto(nombreProducto) required} to Producto
+  HistorialMovimiento{sitio(nombreSitio) required} to Sitio
+  HistorialMovimiento{usuario(nombre) required} to Usuario
+}
+
+paginate * with pagination
+service * with serviceImpl
+dto * with mapstruct

@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20261126054242"
+  },
+  "applications": ["datastock"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "stockDisponible",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    }
+  ],
+  "name": "InventarioActual",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "nombreProducto",
+      "otherEntityName": "producto",
+      "relationshipName": "producto",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "nombreSitio",
+      "otherEntityName": "sitio",
+      "relationshipName": "sitio",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

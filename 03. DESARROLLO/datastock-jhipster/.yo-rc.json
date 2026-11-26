@@ -1,0 +1,29 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "datastock",
+    "buildTool": "maven",
+    "clientFramework": "react",
+    "devDatabaseType": "postgresql",
+    "entities": [
+      "Sitio",
+      "Categoria",
+      "Marca",
+      "Producto",
+      "Rol",
+      "Usuario",
+      "HistorialRolUsuario",
+      "LoteEntrada",
+      "InventarioActual",
+      "HistorialMovimiento"
+    ],
+    "jhipsterVersion": "8.11.0",
+    "jwtSecretKey": "OGI3OGU0YzQ1ODdkOTJlZjZkZDM1MDhiNjFmZjk3NDdmMDAwZDYxZDNkODM1NGMxMDc4MDAwOGM2MWY4ZDlhOTU5ZWU2OTMwOTEzYWM5YTYwZjY0NGRmNThkNWMxYmI2ZDEwYTBmZTIyOWQ3MjM5OTk0ZTc0YWU2ODRiYTBiOWI=",
+    "languages": ["es", "en"],
+    "lastLiquibaseTimestamp": 1795671822000,
+    "nativeLanguage": "es",
+    "packageName": "co.edu.sena.datastock",
+    "prodDatabaseType": "postgresql"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "datastockApp": {
+    "sitio": {
+      "home": {
+        "title": "Sitios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sitio",
+        "createOrEditLabel": "Create or edit a Sitio",
+        "notFound": "No Sitios found"
+      },
+      "created": "A new Sitio is created with identifier {{ param }}",
+      "updated": "A Sitio is updated with identifier {{ param }}",
+      "deleted": "A Sitio is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sitio {{ id }}?"
+      },
+      "detail": {
+        "title": "Sitio"
+      },
+      "id": "ID",
+      "nombreSitio": "Nombre Sitio",
+      "tipoSitio": "Tipo Sitio",
+      "direccion": "Direccion"
+    }
+  }
+}

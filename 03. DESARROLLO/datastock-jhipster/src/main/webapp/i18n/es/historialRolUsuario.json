@@ -1,0 +1,27 @@
+{
+  "datastockApp": {
+    "historialRolUsuario": {
+      "home": {
+        "title": "Historial Rol Usuarios",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Historial Rol Usuario",
+        "createOrEditLabel": "Crear o editar Historial Rol Usuario",
+        "notFound": "Ningún Historial Rol Usuarios encontrado"
+      },
+      "created": "Un nuevo Historial Rol Usuario ha sido creado con el identificador {{ param }}",
+      "updated": "Un Historial Rol Usuario ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Historial Rol Usuario ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Historial Rol Usuario {{ id }}?"
+      },
+      "detail": {
+        "title": "Historial Rol Usuario"
+      },
+      "id": "ID",
+      "fechaAsignacion": "Fecha Asignacion",
+      "estado": "Estado",
+      "usuario": "Usuario",
+      "rol": "Rol"
+    }
+  }
+}

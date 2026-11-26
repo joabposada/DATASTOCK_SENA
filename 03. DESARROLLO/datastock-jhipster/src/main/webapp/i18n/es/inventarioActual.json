@@ -1,0 +1,26 @@
+{
+  "datastockApp": {
+    "inventarioActual": {
+      "home": {
+        "title": "Inventario Actuals",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Inventario Actual",
+        "createOrEditLabel": "Crear o editar Inventario Actual",
+        "notFound": "Ningún Inventario Actuals encontrado"
+      },
+      "created": "Un nuevo Inventario Actual ha sido creado con el identificador {{ param }}",
+      "updated": "Un Inventario Actual ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Inventario Actual ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Inventario Actual {{ id }}?"
+      },
+      "detail": {
+        "title": "Inventario Actual"
+      },
+      "id": "ID",
+      "stockDisponible": "Stock Disponible",
+      "producto": "Producto",
+      "sitio": "Sitio"
+    }
+  }
+}

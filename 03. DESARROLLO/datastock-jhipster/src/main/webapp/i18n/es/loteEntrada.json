@@ -1,0 +1,29 @@
+{
+  "datastockApp": {
+    "loteEntrada": {
+      "home": {
+        "title": "Lote Entradas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Lote Entrada",
+        "createOrEditLabel": "Crear o editar Lote Entrada",
+        "notFound": "Ningún Lote Entradas encontrado"
+      },
+      "created": "Un nuevo Lote Entrada ha sido creado con el identificador {{ param }}",
+      "updated": "Un Lote Entrada ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Lote Entrada ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Lote Entrada {{ id }}?"
+      },
+      "detail": {
+        "title": "Lote Entrada"
+      },
+      "id": "ID",
+      "fechaIngreso": "Fecha Ingreso",
+      "fechaVencimiento": "Fecha Vencimiento",
+      "cantidadIngresada": "Cantidad Ingresada",
+      "facturaProveedor": "Factura Proveedor",
+      "producto": "Producto",
+      "sitio": "Sitio"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "datastockApp": {
+    "historialMovimiento": {
+      "home": {
+        "title": "Historial Movimientos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Historial Movimiento",
+        "createOrEditLabel": "Crear o editar Historial Movimiento",
+        "notFound": "Ningún Historial Movimientos encontrado"
+      },
+      "created": "Un nuevo Historial Movimiento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Historial Movimiento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Historial Movimiento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Historial Movimiento {{ id }}?"
+      },
+      "detail": {
+        "title": "Historial Movimiento"
+      },
+      "id": "ID",
+      "idSitioDestino": "Id Sitio Destino",
+      "tipoMovimiento": "Tipo Movimiento",
+      "cantidad": "Cantidad",
+      "fechaHora": "Fecha Hora",
+      "producto": "Producto",
+      "sitio": "Sitio",
+      "usuario": "Usuario"
+    }
+  }
+}
