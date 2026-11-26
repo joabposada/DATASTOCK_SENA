@@ -8,9 +8,29 @@ import jakarta.persistence.*;
 @Table(name = "inventario_actual")
 public class InventarioActual {
 
-    // incrusto la llave compuesta formada por producto y sitio
     @EmbeddedId
     private InventarioActualId id;
+
+    @ManyToOne
+    @MapsId("idProducto")
+    @JoinColumn(name = "id_producto", nullable = false)
+    private Producto producto;
+
+    @ManyToOne
+    @MapsId("idSitio")
+    @JoinColumn(name = "id_sitio", nullable = false)
+    private Sitio sitio;
+
+    @Column(name = "stock_disponible", nullable = false)
+    private Integer stockDisponible;
+
+    public InventarioActualId getId() {
+        return id;
+    }
+
+    public void setId(InventarioActualId id) {
+        this.id = id;
+    }
 
     public Producto getProducto() {
         return producto;
@@ -20,19 +40,19 @@ public class InventarioActual {
         this.producto = producto;
     }
 
-    // enlazo el objeto producto con el atributo 'idproducto' de mi llave compuesta
-    @ManyToOne
-    @MapsId("idProducto")
-    @JoinColumn(name = "id_producto", nullable = false)
-    private Producto producto;
+    public Sitio getSitio() {
+        return sitio;
+    }
 
-    // enlazo el objeto sitio con el atributo 'idsitio' de mi llave compuesta
-    @ManyToOne
-    @MapsId("idSitio")
-    @JoinColumn(name = "id_sitio", nullable = false)
-    private Sitio sitio;
+    public void setSitio(Sitio sitio) {
+        this.sitio = sitio;
+    }
 
-    @Column(name = "stock_disponible", nullable = false)
-    private Integer stockDisponible;
+    public Integer getStockDisponible() {
+        return stockDisponible;
+    }
 
+    public void setStockDisponible(Integer stockDisponible) {
+        this.stockDisponible = stockDisponible;
+    }
 }

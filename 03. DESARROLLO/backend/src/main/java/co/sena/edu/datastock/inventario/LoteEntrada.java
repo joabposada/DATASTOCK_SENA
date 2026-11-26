@@ -1,4 +1,3 @@
-//package inventario y movimiento
 package co.sena.edu.datastock.inventario;
 
 import co.sena.edu.datastock.catalogo.Producto;
@@ -15,23 +14,13 @@ public class LoteEntrada {
     @Column(name = "id_lote")
     private Integer idLote;
 
-    // Traigo el producto desde el paquete catalogo
     @ManyToOne
     @JoinColumn(name = "id_producto", nullable = false)
     private Producto producto;
 
-    // Traigo el sitio desde el paquete infraestructura
     @ManyToOne
     @JoinColumn(name = "id_sitio", nullable = false)
     private Sitio sitio;
-
-    public LocalDate getFechaIngreso() {
-        return fechaIngreso;
-    }
-
-    public void setFechaIngreso(LocalDate fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
-    }
 
     @Column(name = "fecha_ingreso", nullable = false)
     private LocalDate fechaIngreso;
@@ -44,5 +33,60 @@ public class LoteEntrada {
 
     @Column(name = "factura_proveedor", length = 50, nullable = false)
     private String facturaProveedor;
-    
+
+    public Integer getIdLote() {
+        return idLote;
+    }
+
+    public void setIdLote(Integer idLote) {
+        this.idLote = idLote;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Sitio getSitio() {
+        return sitio;
+    }
+
+    public void setSitio(Sitio sitio) {
+        this.sitio = sitio;
+    }
+
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public LocalDate getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public Integer getCantidadIngresada() {
+        return cantidadIngresada;
+    }
+
+    public void setCantidadIngresada(Integer cantidadIngresada) {
+        this.cantidadIngresada = cantidadIngresada;
+    }
+
+    public String getFacturaProveedor() {
+        return facturaProveedor;
+    }
+
+    public void setFacturaProveedor(String facturaProveedor) {
+        this.facturaProveedor = facturaProveedor;
+    }
 }

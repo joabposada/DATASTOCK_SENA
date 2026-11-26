@@ -5,23 +5,29 @@ import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
-// Uso @Embeddable porque esta clase representa la llave compuesta de inventario_actual
 @Embeddable
 public class InventarioActualId implements Serializable {
 
     @Column(name = "id_producto")
     private Integer idProducto;
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        InventarioActualId that = (InventarioActualId) o;
-        return Objects.equals(idProducto, that.idProducto) && Objects.equals(idSitio, that.idSitio);
+    @Column(name = "id_sitio")
+    private Integer idSitio;
+
+    public InventarioActualId() {
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(idProducto, idSitio);
+    public InventarioActualId(Integer idProducto, Integer idSitio) {
+        this.idProducto = idProducto;
+        this.idSitio = idSitio;
+    }
+
+    public Integer getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
 
     public Integer getIdSitio() {
@@ -32,7 +38,16 @@ public class InventarioActualId implements Serializable {
         this.idSitio = idSitio;
     }
 
-    @Column(name = "id_sitio")
-    private Integer idSitio;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        InventarioActualId that = (InventarioActualId) o;
+        return Objects.equals(idProducto, that.idProducto) && Objects.equals(idSitio, that.idSitio);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProducto, idSitio);
+    }
 }

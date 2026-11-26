@@ -1,0 +1,26 @@
+info:
+  name: Salida stock insuficiente (400)
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:8080/api/movimientos
+  body:
+    type: json
+    data: |-
+      {
+        "idProducto": 1,
+        "idSitio": 1,
+        "idUsuario": 1,
+        "tipoMovimiento": "SALIDA",
+        "cantidad": 500
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
